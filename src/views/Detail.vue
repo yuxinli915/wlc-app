@@ -1,10 +1,11 @@
 <template>
-    <div class="home"></div>
+    <div>{{ id }}</div>
 </template>
 
 <script>
 export default {
-    name: "Home",
+    name: "Detail",
     components: {},
+    props: ["id"],
 };
 </script>
