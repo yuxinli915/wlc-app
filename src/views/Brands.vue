@@ -4,7 +4,7 @@
             <v-col>
                 <v-chip-group>
                     <v-chip
-                        v-for="brand in dummy"
+                        v-for="brand in brands"
                         :key="brand.id"
                         @click="selectedBrandId = brand.id"
                     >
@@ -27,12 +27,6 @@ export default {
     },
     data: () => ({
         brands: [],
-        dummy: [
-            { id: 1, brand: "bmw", logo: "/img/a.jpg" },
-            { id: 2, brand: "toyota", logo: "/img/b.jpg" },
-            { id: 3, brand: "benz", logo: "/img/a.jpg" },
-            { id: 4, brand: "audi", logo: "/img/b.jpg" },
-        ],
         selectedBrandId: undefined,
     }),
     methods: {
@@ -51,7 +45,7 @@ export default {
         },
     },
     mounted() {
-        // this.getBrands();
+        this.getBrands();
     },
 };
 </script>

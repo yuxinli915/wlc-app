@@ -2,7 +2,7 @@
     <v-container>
         <v-list two-line>
             <v-list-item
-                v-for="car in dummy"
+                v-for="car in cars"
                 :key="car.id"
                 @click="
                     $router.push({ name: 'Detail', params: { id: car.id } })
@@ -38,22 +38,6 @@ export default {
     props: ["id"],
     data: () => ({
         cars: [],
-        dummy: [
-            {
-                id: 1,
-                car_name: "x1",
-                pic: "/img/a.jpg",
-                min: 20.11,
-                max: 99.99,
-            },
-            {
-                id: 2,
-                car_name: "x3",
-                pic: "/img/b.jpg",
-                min: 21.11,
-                max: 99.99,
-            },
-        ],
     }),
     methods: {
         getCars(id) {

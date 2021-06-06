@@ -3,7 +3,7 @@ export default {
     install(Vue, options) {
         //BEGIN AXIOS SETTINGS
         const axiosInstance = axios.create({
-            useWithCredentials: options.useWithCredentials,
+            baseURL: options.baseURL,
         });
         Vue.axios = axiosInstance;
         Vue.prototype.$axios = axiosInstance;
