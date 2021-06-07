@@ -36,13 +36,18 @@
 export default {
     name: "CarsList",
     props: ["id"],
+    watch: {
+        id() {
+            this.getCars(this.id);
+        },
+    },
     data: () => ({
         cars: [],
     }),
     methods: {
         getCars(id) {
             if (id != undefined) {
-                let url = " /car/get_brand_car?format=json";
+                let url = "/index/car/get_brand_car?format=json";
                 let params = new FormData();
                 let self = this;
 
@@ -51,16 +56,13 @@ export default {
                 this.$axios
                     .post(url)
                     .then((r) => {
-                        self.cars = r.data;
+                        self.cars = r.data.data;
                     })
                     .catch((e) => {
                         return e;
                     });
             }
         },
-    },
-    mounted() {
-        this.getCars(this.id);
     },
 };
 </script>

@@ -1,19 +1,16 @@
 <template>
     <v-container>
-        <v-row justify="space-around">
-            <v-col>
-                <v-chip-group>
-                    <v-chip
-                        v-for="brand in brands"
-                        :key="brand.id"
-                        @click="selectedBrandId = brand.id"
-                    >
-                        {{ brand.brand }}
-                    </v-chip>
-                </v-chip-group>
-            </v-col>
-        </v-row>
-        <CarsList :id="selectedBrandId"/>
+        <v-card>
+            <v-tabs background-color="blue" center-active>
+                <v-tab
+                    v-for="i in brands"
+                    :key="i.id"
+                    @click="selectedBrandId = i.id"
+                    >{{ i.brand }}</v-tab
+                >
+            </v-tabs>
+        </v-card>
+        <CarsList :id="selectedBrandId" />
     </v-container>
 </template>
 
@@ -28,20 +25,24 @@ export default {
     data: () => ({
         brands: [],
         selectedBrandId: undefined,
+        reload: 0,
     }),
     methods: {
         getBrands() {
-            let url = "/car/get_brand?format=json";
+            let url = "/index/car/get_brand?format=json";
             let self = this;
 
             this.$axios
                 .post(url)
                 .then((r) => {
-                    self.brands = r.data;
+                    self.brands = r.data.data;
                 })
                 .catch((e) => {
                     return e;
                 });
+        },
+        debug(any) {
+            console.log(any);
         },
     },
     mounted() {
