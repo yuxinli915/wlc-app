@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <v-card>
-            <v-tabs background-color="blue" center-active>
+            <v-tabs show-arrows>
                 <v-tab
                     v-for="i in brands"
                     :key="i.id"
