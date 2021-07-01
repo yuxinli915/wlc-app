@@ -14,6 +14,7 @@
                     v-for="car in cars"
                     :key="car.id"
                     class="primary px-3 mb-5"
+                    @click="goToDetail(car.id)"
                 >
                     <v-row>
                         <v-col cols="6" justify="center">
@@ -88,6 +89,12 @@ export default {
                     })
                     .catch((e) => e);
             }
+        },
+        goToDetail(id) {
+            this.$router.push({
+                name: "Detail",
+                params: { id: id },
+            });
         },
     },
     mounted() {},
